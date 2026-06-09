@@ -2,70 +2,125 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>For My Maira 💖</title>
+    <title>Happy Birthday Maira 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body { background-color: #fdf2f8; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .hidden { display: none; }
         .container { max-width: 500px; width: 100%; text-align: center; }
-        h1 { font-family: 'Caveat', cursive; color: #db2777; font-size: 3rem; }
+        .hidden { display: none; }
+        h1 { font-family: 'Caveat', cursive; color: #db2777; font-size: 3rem; margin-bottom: 20px; }
+        .btn { background: #db2777; color: white; border: none; padding: 15px 30px; border-radius: 30px; cursor: pointer; margin: 10px; font-size: 1.1rem; }
         
-        /* Memory Section */
+        .cake-btn { font-size: 100px; cursor: pointer; margin: 20px; }
+        
         .memory-slot { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 30px; }
         .memory-slot img { width: 100%; border-radius: 10px; }
         .memory-text { margin-top: 15px; font-weight: 500; color: #4b5563; font-style: italic; }
         
-        /* Quiz & Cake */
-        .cake-btn { font-size: 100px; cursor: pointer; transition: 0.3s; }
-        .btn { background: #db2777; color: white; border: none; padding: 15px 30px; border-radius: 30px; cursor: pointer; margin: 10px; font-size: 1.1rem; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 10px; border: 1px solid #ccc; }
     </style>
 </head>
 <body>
 
-    <div id="section-memory" class="container">
-        <h1>Our Memory Lane 🌙</h1>
-        <div class="memory-slot"><img src="ss1.png"><p class="memory-text">"You’re the best it gets dude"—trying to act cool about the flowers!</p></div>
-        <button class="btn" onclick="showSurprise()">Ready for your Birthday Surprise? 🎁</button>
-    </div>
-
-    <div id="section-surprise" class="container hidden">
+    <div id="section-surprise" class="container">
         <h1>Happy Birthday Maira! 🎂</h1>
         <div id="cake" class="cake-btn" onclick="blowOut()">🎂</div>
         <p id="hint">Tap the cake to blow out candles!</p>
         
         <div id="letter" class="hidden">
-            <p>Your birthday letter text here...</p>
-            <button class="btn" onclick="startQuiz()">Take the KFC Quiz! 🍔</button>
+            <p>I know you inside out—from your "generator" talks to your "chamat" threats! Enjoy this memory lane I made for you.</p>
+            <button class="btn" onclick="showMemory()">See Our Memory Lane 📸</button>
         </div>
+    </div>
+
+    <div id="section-memory" class="container hidden">
+        <h1>Our Memory Lane 🌙</h1>
+        <div class="memory-slot"><img src="ss1.png"><p class="memory-text">"You’re the best it gets dude"—Flowers appreciation!</p></div>
+        <div class="memory-slot"><img src="ss2.png"><p class="memory-text">Cats > kids pact!</p></div>
+        <div class="memory-slot"><img src="ss3.png"><p class="memory-text">You listing your own qualities—my favorite narcissist.</p></div>
+        <div class="memory-slot"><img src="ss4.png"><p class="memory-text">Personal therapist/Otis at 2 AM.</p></div>
+        <div class="memory-slot"><img src="ss5.png"><p class="memory-text">Baraat panic—our secret launch!</p></div>
+        <div class="memory-slot"><img src="ss6.png"><p class="memory-text">The "chamat" threat—classic Maira.</p></div>
+        <div class="memory-slot"><img src="ss7.png"><p class="memory-text">The universe behind your silence.</p></div>
+        <div class="memory-slot"><img src="ss8.png"><p class="memory-text">My favorite ears to talk to.</p></div>
+        <div class="memory-slot"><img src="ss9.png"><p class="memory-text">You know every corner of my heart.</p></div>
+        <div class="memory-slot"><img src="ss10.png"><p class="memory-text">"Should always listen to me."</p></div>
+        <div class="memory-slot"><img src="ss11.png"><p class="memory-text">Your generator stories!</p></div>
+        <div class="memory-slot"><img src="ss12.png"><p class="memory-text">Threatening to tell my sister!</p></div>
+        <div class="memory-slot"><img src="ss13.png"><p class="memory-text">"You are perfect"—even if you deny it.</p></div>
+        
+        <button class="btn" onclick="startQuiz()">Take the KFC Quiz! 🍔</button>
     </div>
 
     <div id="section-quiz" class="container hidden">
         <h1>KFC Mighty Quiz 🍔</h1>
-        <div id="quiz-content"></div>
+        <div id="quiz-content">
+            <p id="disclaimer"><b>Disclaimer:</b> If you get more than 50% correct, I am delivering a KFC Mighty to your house!</p>
+            <div id="q-area"></div>
+        </div>
     </div>
 
     <script>
-        // Notification Helper
-        function notify(msg) {
-            fetch('https://ntfy.sh/aliyan_maira_proposal_2026', { method: 'POST', body: msg });
-        }
-
-        function showSurprise() {
-            document.getElementById('section-memory').classList.add('hidden');
-            document.getElementById('section-surprise').classList.remove('hidden');
-            notify("Maira reached the Birthday Surprise page!");
-        }
-
         function blowOut() {
             document.getElementById('cake').innerHTML = '🧁';
             document.getElementById('hint').innerText = "Make a wish! ✨";
             document.getElementById('letter').classList.remove('hidden');
         }
 
-        function startQuiz() {
+        function showMemory() {
             document.getElementById('section-surprise').classList.add('hidden');
+            document.getElementById('section-memory').classList.remove('hidden');
+        }
+
+        const quizData = [
+            { q: "Which book made me fall in love with reading?", a: ["Biology book", "Harry Potter", "Some random book"], c: 0 },
+            { q: "What's the one thing we both agree on?", a: ["We love kids", "We love cats", "We love studying"], c: 1 }
+        ];
+        let score = 0; let qIdx = 0;
+
+        function startQuiz() {
+            document.getElementById('section-memory').classList.add('hidden');
             document.getElementById('section-quiz').classList.remove('hidden');
-            // Add quiz logic here
+            renderQ();
+        }
+
+        function renderQ() {
+            if(qIdx < quizData.length) {
+                let d = quizData[qIdx];
+                let html = `<h3>${d.q}</h3>`;
+                d.a.forEach((o, i) => html += `<button class="btn" onclick="check(${i})">${o}</button>`);
+                document.getElementById('quiz-content').innerHTML = html;
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function check(i) {
+            if(i === quizData[qIdx].c) score++;
+            qIdx++; renderQ();
+        }
+
+        function finishQuiz() {
+            let pass = (score/quizData.length) > 0.5;
+            let html = `<h2>Score: ${score}/${quizData.length}</h2>`;
+            if(pass) {
+                html += `<p>You passed! Enter address: <input id="adr" type="text"></p>
+                         <p>Enter your One Wish: <textarea id="wsh"></textarea></p>
+                         <button class="btn" onclick="submitFinal()">Submit</button>`;
+            } else {
+                html += `<p>Sorry, no burger! ❤️</p>`;
+            }
+            document.getElementById('quiz-content').innerHTML = html;
+        }
+
+        function submitFinal() {
+            let adr = document.getElementById('adr').value;
+            let wsh = document.getElementById('wsh').value;
+            fetch('https://ntfy.sh/aliyan_maira_proposal_2026', { 
+                method: 'POST', 
+                body: `🍔 BURGER TIME! Address: ${adr} | Wish: ${wsh}` 
+            });
+            alert("Order placed! And your wish is noted. I will fulfill it 100%!");
         }
     </script>
 </body>
