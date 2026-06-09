@@ -2,125 +2,294 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Maira 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #fdf2f8; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .container { max-width: 500px; width: 100%; text-align: center; }
-        .hidden { display: none; }
-        h1 { font-family: 'Caveat', cursive; color: #db2777; font-size: 3rem; margin-bottom: 20px; }
-        .btn { background: #db2777; color: white; border: none; padding: 15px 30px; border-radius: 30px; cursor: pointer; margin: 10px; font-size: 1.1rem; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        .cake-btn { font-size: 100px; cursor: pointer; margin: 20px; }
+        body { 
+            background: linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 100%); 
+            font-family: 'Poppins', sans-serif; 
+            color: #374151; 
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* --- UI Components --- */
+        .section { 
+            display: none; /* Hidden by default */
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            width: 100%; 
+            max-width: 500px; 
+            min-height: 80vh;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .active-section { display: flex; }
+
+        .card { 
+            background: white; 
+            padding: 40px 30px; 
+            border-radius: 25px; 
+            box-shadow: 0 20px 40px rgba(219, 39, 119, 0.15); 
+            width: 100%; 
+            text-align: center; 
+        }
+
+        h1, h2 { font-family: 'Caveat', cursive; color: #db2777; line-height: 1.2; }
+        h1 { font-size: 3.5rem; margin-bottom: 15px; }
+        h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; color: #4b5563; }
+
+        .btn { 
+            background: #db2777; color: white; border: none; padding: 15px 30px; 
+            border-radius: 50px; font-size: 1.1rem; font-weight: 600; font-family: 'Poppins', sans-serif;
+            cursor: pointer; margin-top: 15px; width: 100%; 
+            box-shadow: 0 8px 15px rgba(219, 39, 119, 0.3); transition: transform 0.2s;
+        }
+        .btn:active { transform: scale(0.95); }
+
+        input, textarea { 
+            width: 100%; padding: 15px; margin-top: 10px; border-radius: 15px; 
+            border: 2px solid #fbcfe8; font-family: 'Poppins', sans-serif; font-size: 1rem;
+            outline: none; transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus { border-color: #db2777; }
+        textarea { resize: vertical; min-height: 100px; }
+
+        /* --- Specific Elements --- */
+        .cake-btn { font-size: 120px; cursor: pointer; margin: 20px; animation: pulse 2s infinite; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); }
         
-        .memory-slot { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        .memory-slot img { width: 100%; border-radius: 10px; }
-        .memory-text { margin-top: 15px; font-weight: 500; color: #4b5563; font-style: italic; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Memory Lane Specifics */
+        #sec-memory { justify-content: flex-start; padding-top: 40px; padding-bottom: 40px; }
+        .memory-slot { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 20px rgba(219, 39, 119, 0.1); margin-bottom: 30px; width: 100%; text-align: center; }
+        .memory-slot img { width: 100%; border-radius: 15px; border: 1px solid #fce7f3; margin-bottom: 15px; }
+        .memory-title { font-family: 'Caveat', cursive; font-size: 2rem; color: #db2777; margin-bottom: 5px; }
+        .memory-text { font-weight: 400; font-style: italic; margin-bottom: 0; }
         
-        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 10px; border: 1px solid #ccc; }
+        .opt-btn { background: #fdf2f8; color: #db2777; border: 2px solid #fbcfe8; width: 100%; margin-top: 10px; padding: 12px; border-radius: 15px; font-weight: 500; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        .opt-btn:hover { background: #fce7f3; }
     </style>
 </head>
 <body>
 
-    <div id="section-surprise" class="container">
-        <h1>Happy Birthday Maira! 🎂</h1>
-        <div id="cake" class="cake-btn" onclick="blowOut()">🎂</div>
-        <p id="hint">Tap the cake to blow out candles!</p>
-        
-        <div id="letter" class="hidden">
-            <p>I know you inside out—from your "generator" talks to your "chamat" threats! Enjoy this memory lane I made for you.</p>
-            <button class="btn" onclick="showMemory()">See Our Memory Lane 📸</button>
+    <audio id="bday-audio" src="bday_song.mp3" loop></audio>
+
+    <div id="sec-cake" class="section active-section">
+        <div class="card">
+            <h1>Happy Birthday<br>Maira! 🌙</h1>
+            <div id="cake" class="cake-btn" onclick="blowOut()">🎂</div>
+            <p id="cake-hint" style="color: #db2777; font-weight: 600;">Tap to blow out the candles! ✨</p>
+            
+            <div id="cake-letter" style="display: none; margin-top: 20px;">
+                <p>I know you inside out—from your "generator" talks to your "chamat" threats! I made something special for you.</p>
+                <button class="btn" onclick="switchSection('sec-memory')">See Our Memory Lane 📸</button>
+            </div>
         </div>
     </div>
 
-    <div id="section-memory" class="container hidden">
-        <h1>Our Memory Lane 🌙</h1>
-        <div class="memory-slot"><img src="ss1.png"><p class="memory-text">"You’re the best it gets dude"—Flowers appreciation!</p></div>
-        <div class="memory-slot"><img src="ss2.png"><p class="memory-text">Cats > kids pact!</p></div>
-        <div class="memory-slot"><img src="ss3.png"><p class="memory-text">You listing your own qualities—my favorite narcissist.</p></div>
-        <div class="memory-slot"><img src="ss4.png"><p class="memory-text">Personal therapist/Otis at 2 AM.</p></div>
-        <div class="memory-slot"><img src="ss5.png"><p class="memory-text">Baraat panic—our secret launch!</p></div>
-        <div class="memory-slot"><img src="ss6.png"><p class="memory-text">The "chamat" threat—classic Maira.</p></div>
-        <div class="memory-slot"><img src="ss7.png"><p class="memory-text">The universe behind your silence.</p></div>
-        <div class="memory-slot"><img src="ss8.png"><p class="memory-text">My favorite ears to talk to.</p></div>
-        <div class="memory-slot"><img src="ss9.png"><p class="memory-text">You know every corner of my heart.</p></div>
-        <div class="memory-slot"><img src="ss10.png"><p class="memory-text">"Should always listen to me."</p></div>
-        <div class="memory-slot"><img src="ss11.png"><p class="memory-text">Your generator stories!</p></div>
-        <div class="memory-slot"><img src="ss12.png"><p class="memory-text">Threatening to tell my sister!</p></div>
-        <div class="memory-slot"><img src="ss13.png"><p class="memory-text">"You are perfect"—even if you deny it.</p></div>
+    <div id="sec-memory" class="section">
+        <h1 style="margin-bottom: 5px;">Our Memory Lane</h1>
+        <p style="text-align: center; color: #db2777; font-weight: 500;">13 moments that defined us...</p>
         
-        <button class="btn" onclick="startQuiz()">Take the KFC Quiz! 🍔</button>
+        <div class="memory-slot"><div class="memory-title">The Flower Appreciation</div><img src="ss1.png"><p class="memory-text">You pretending to be cool about the flowers, but secretly loving the thought I put into them.</p></div>
+        <div class="memory-slot"><div class="memory-title">Our "Crazy" Dynamic</div><img src="ss2.png"><p class="memory-text">"Shauna babu" vs "Ghatiya shaks"—the peak of our chaos.</p></div>
+        <div class="memory-slot"><div class="memory-title">Your Personal Therapist</div><img src="ss3.png"><p class="memory-text">Embracing the Otis role. I'll always be here to listen to your lore at 2 AM.</p></div>
+        <div class="memory-slot"><div class="memory-title">Out of My League</div><img src="ss4.png"><p class="memory-text">When you doubted yourself and I had to remind you that you're the prettiest girl in the world.</p></div>
+        <div class="memory-slot"><div class="memory-title">The Safe Space</div><img src="ss5.png"><p class="memory-text">The trust you showed venting about your family—thank you for letting me be your safe harbor.</p></div>
+        <div class="memory-slot"><div class="memory-title">The Baraat Panic</div><img src="ss6.png"><p class="memory-text">That stressful night after the wedding, terrified that your family would find out about us.</p></div>
+        <div class="memory-slot"><div class="memory-title">Literally Perfect</div><img src="ss7.png"><p class="memory-text">"I’m literally perfect so"—I couldn't help but tease you and agree!</p></div>
+        <div class="memory-slot"><div class="memory-title">Same Energy</div><img src="ss8.png"><p class="memory-text">Our pact against kids and love for cats—we're just the same person.</p></div>
+        <div class="memory-slot"><div class="memory-title">Exam Stress</div><img src="ss9.png"><p class="memory-text">The raw anxiety of exam season. We survived that, and we'll survive everything.</p></div>
+        <div class="memory-slot"><div class="memory-title">The "Obedient" Promise</div><img src="ss10.png"><p class="memory-text">"Should always listen to me." You're bossy, but it's the cutest thing ever.</p></div>
+        <div class="memory-slot"><div class="memory-title">The Generator</div><img src="ss11.png"><p class="memory-text">You talk a lot when you're excited, and honestly, I never want you to stop.</p></div>
+        <div class="memory-slot"><div class="memory-title">The Ultimate Threat</div><img src="ss12.png"><p class="memory-text">"TUMHARI BEHEN KO SAB BATAONGI"—the classic warning that keeps me in line!</p></div>
+        <div class="memory-slot"><div class="memory-title">Listing Your Qualities</div><img src="ss13.png"><p class="memory-text">You listing your own qualities—my favorite kind of narcissism.</p></div>
+        
+        <button class="btn" style="margin-bottom: 40px;" onclick="switchSection('sec-disclaimer')">I have a Challenge for you! 🍔</button>
     </div>
 
-    <div id="section-quiz" class="container hidden">
-        <h1>KFC Mighty Quiz 🍔</h1>
-        <div id="quiz-content">
-            <p id="disclaimer"><b>Disclaimer:</b> If you get more than 50% correct, I am delivering a KFC Mighty to your house!</p>
-            <div id="q-area"></div>
+    <div id="sec-disclaimer" class="section">
+        <div class="card">
+            <h1>KFC Mighty Quiz 🍔</h1>
+            <h2>The Rules</h2>
+            <p>I know you claim to know me inside out. Let's test that.</p>
+            <p><b>If you score more than 50%</b>, I will personally deliver a KFC Mighty Zinger straight to your house.</p>
+            <p>Are you ready?</p>
+            <button class="btn" onclick="startQuiz()">Start the Quiz! 🏁</button>
+        </div>
+    </div>
+
+    <div id="sec-quiz" class="section">
+        <div class="card">
+            <h2 id="q-text" style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: #374151;">Loading Question...</h2>
+            <div id="options-area" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <div id="sec-fail" class="section">
+        <div class="card">
+            <h1>Oh no! 😭</h1>
+            <p id="fail-score"></p>
+            <p>You scored less than 50%. I guess no KFC Mighty for you today!</p>
+            <p>(Just kidding, I'll still buy you food, but you lost the bet!)</p>
+        </div>
+    </div>
+
+    <div id="sec-address" class="section">
+        <div class="card">
+            <h1>You Won! 🎉</h1>
+            <p id="pass-score" style="color: #db2777; font-weight: bold;"></p>
+            <p>A promise is a promise. I owe you a KFC Mighty.</p>
+            <p>Enter your exact delivery address below so I can send it:</p>
+            <input type="text" id="address-input" placeholder="Your full address...">
+            <button class="btn" onclick="submitAddress()">Next Step 👉</button>
+        </div>
+    </div>
+
+    <div id="sec-wish" class="section">
+        <div class="card">
+            <h1>One Last Thing ✨</h1>
+            <p>While your burger is being prepared... make a wish.</p>
+            <p>Type out one wish below. I will not just try, I will <b>100% fulfill it</b>. Wish wisely, you only get one.</p>
+            <textarea id="wish-input" placeholder="My wish is..."></textarea>
+            <button class="btn" onclick="submitFinal()">Make My Wish ❤️</button>
+        </div>
+    </div>
+
+    <div id="sec-success" class="section">
+        <div class="card">
+            <h1>Sent! 💌</h1>
+            <div style="font-size: 80px; margin: 20px;">🍔✨</div>
+            <p>Your address and your wish have been sent directly to my phone.</p>
+            <p>Happy Birthday, my Maira. Get ready.</p>
         </div>
     </div>
 
     <script>
+        // --- Navigation Logic ---
+        function switchSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active-section'));
+            document.getElementById(id).classList.add('active-section');
+            window.scrollTo(0,0);
+        }
+
+        // --- Notifications ---
+        function notify(msg) {
+            fetch('https://ntfy.sh/aliyan_maira_proposal_2026', { 
+                method: 'POST', 
+                body: msg 
+            }).catch(e => console.log("Ntfy error:", e));
+        }
+
+        // --- Cake Logic ---
+        let cakeBlown = false;
         function blowOut() {
+            if(cakeBlown) return;
+            cakeBlown = true;
+            
             document.getElementById('cake').innerHTML = '🧁';
-            document.getElementById('hint').innerText = "Make a wish! ✨";
-            document.getElementById('letter').classList.remove('hidden');
+            document.getElementById('cake').style.animation = 'none';
+            document.getElementById('cake-hint').innerText = "Make a wish! ✨";
+            document.getElementById('cake-letter').style.display = 'block';
+
+            // Start Audio Safely
+            let audio = document.getElementById('bday-audio');
+            if(audio) {
+                audio.volume = 0.4;
+                audio.play().catch(e => console.log("Audio prevented:", e));
+            }
+            notify("🎂 Maira just opened her Birthday page and blew out the candles!");
         }
 
-        function showMemory() {
-            document.getElementById('section-surprise').classList.add('hidden');
-            document.getElementById('section-memory').classList.remove('hidden');
-        }
-
+        // --- Quiz Logic ---
         const quizData = [
-            { q: "Which book made me fall in love with reading?", a: ["Biology book", "Harry Potter", "Some random book"], c: 0 },
-            { q: "What's the one thing we both agree on?", a: ["We love kids", "We love cats", "We love studying"], c: 1 }
+            { q: "Which book made me fall in love with reading?", a: ["Harry Potter", "A book brought in Biology Class", "Percy Jackson"], c: 1 },
+            { q: "What's the one thing we both firmly agree on?", a: ["We love kids", "We love big parties", "Cats > Kids"], c: 2 },
+            { q: "What role do I play for you at 2 AM?", a: ["Your personal Otis/Therapist", "Your study buddy", "Your alarm clock"], c: 0 },
+            { q: "What did I promise to say whenever you are upset with me?", a: ["'Sorry'", "'Jee Acha'", "'You are right'"], c: 1 },
+            { q: "How many years have I waited for you?", a: ["8 years", "5 years", "3 years"], c: 0 }
         ];
-        let score = 0; let qIdx = 0;
+        
+        let score = 0; 
+        let currentQ = 0;
 
         function startQuiz() {
-            document.getElementById('section-memory').classList.add('hidden');
-            document.getElementById('section-quiz').classList.remove('hidden');
-            renderQ();
+            notify("🍔 Maira just started the KFC Quiz!");
+            switchSection('sec-quiz');
+            loadQuestion();
         }
 
-        function renderQ() {
-            if(qIdx < quizData.length) {
-                let d = quizData[qIdx];
-                let html = `<h3>${d.q}</h3>`;
-                d.a.forEach((o, i) => html += `<button class="btn" onclick="check(${i})">${o}</button>`);
-                document.getElementById('quiz-content').innerHTML = html;
+        function loadQuestion() {
+            if (currentQ < quizData.length) {
+                let data = quizData[currentQ];
+                document.getElementById('q-text').innerText = `${currentQ + 1}. ${data.q}`;
+                
+                let optsHTML = '';
+                data.a.forEach((opt, index) => {
+                    optsHTML += `<button class="opt-btn" onclick="checkAnswer(${index})">${opt}</button>`;
+                });
+                document.getElementById('options-area').innerHTML = optsHTML;
             } else {
-                finishQuiz();
+                endQuiz();
             }
         }
 
-        function check(i) {
-            if(i === quizData[qIdx].c) score++;
-            qIdx++; renderQ();
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === quizData[currentQ].c) {
+                score++;
+            }
+            currentQ++;
+            loadQuestion();
         }
 
-        function finishQuiz() {
-            let pass = (score/quizData.length) > 0.5;
-            let html = `<h2>Score: ${score}/${quizData.length}</h2>`;
-            if(pass) {
-                html += `<p>You passed! Enter address: <input id="adr" type="text"></p>
-                         <p>Enter your One Wish: <textarea id="wsh"></textarea></p>
-                         <button class="btn" onclick="submitFinal()">Submit</button>`;
+        function endQuiz() {
+            let percentage = (score / quizData.length) * 100;
+            if (percentage > 50) {
+                document.getElementById('pass-score').innerText = `You scored ${percentage}% (${score}/${quizData.length})!`;
+                switchSection('sec-address');
+                notify(`✅ Maira PASSED the quiz! Score: ${score}/5`);
             } else {
-                html += `<p>Sorry, no burger! ❤️</p>`;
+                document.getElementById('fail-score').innerText = `You only scored ${percentage}% (${score}/${quizData.length}).`;
+                switchSection('sec-fail');
+                notify(`❌ Maira FAILED the quiz. Score: ${score}/5`);
             }
-            document.getElementById('quiz-content').innerHTML = html;
+        }
+
+        // --- Forms Logic ---
+        function submitAddress() {
+            let adr = document.getElementById('address-input').value.trim();
+            if(adr === "") {
+                alert("Please enter your address first!");
+                return;
+            }
+            // Store address globally to send later
+            window.userAddress = adr;
+            switchSection('sec-wish');
         }
 
         function submitFinal() {
-            let adr = document.getElementById('adr').value;
-            let wsh = document.getElementById('wsh').value;
-            fetch('https://ntfy.sh/aliyan_maira_proposal_2026', { 
-                method: 'POST', 
-                body: `🍔 BURGER TIME! Address: ${adr} | Wish: ${wsh}` 
-            });
-            alert("Order placed! And your wish is noted. I will fulfill it 100%!");
+            let wish = document.getElementById('wish-input').value.trim();
+            if(wish === "") {
+                alert("You have to make a wish first!");
+                return;
+            }
+
+            // Send EVERYTHING to your phone
+            let finalMessage = `🚨 MAIRA'S FINAL SUBMISSION!\n\n🏠 Address: ${window.userAddress}\n✨ Wish: ${wish}`;
+            notify(finalMessage);
+
+            switchSection('sec-success');
         }
     </script>
 </body>
