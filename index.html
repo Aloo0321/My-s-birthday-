@@ -2,48 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Memory Lane 💖</title>
+    <title>For My Maira 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body { background-color: #fdf2f8; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { font-family: 'Caveat', cursive; font-size: 3rem; color: #db2777; }
+        .hidden { display: none; }
+        .container { max-width: 500px; width: 100%; text-align: center; }
+        h1 { font-family: 'Caveat', cursive; color: #db2777; font-size: 3rem; }
         
-        .memory-slot { 
-            width: 100%; max-width: 450px; background: white; 
-            padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-            margin-bottom: 35px; text-align: center;
-        }
-        .memory-slot img { width: 100%; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
-        .memory-title { font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--primary); margin-bottom: 5px; }
-        .memory-text { font-weight: 400; color: #4b5563; }
+        /* Memory Section */
+        .memory-slot { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .memory-slot img { width: 100%; border-radius: 10px; }
+        .memory-text { margin-top: 15px; font-weight: 500; color: #4b5563; font-style: italic; }
         
-        .reveal-btn { background-color: #db2777; color: white; border: none; padding: 20px 40px; border-radius: 50px; font-size: 1.3rem; cursor: pointer; margin: 40px 0; }
+        /* Quiz & Cake */
+        .cake-btn { font-size: 100px; cursor: pointer; transition: 0.3s; }
+        .btn { background: #db2777; color: white; border: none; padding: 15px 30px; border-radius: 30px; cursor: pointer; margin: 10px; font-size: 1.1rem; }
     </style>
 </head>
 <body>
 
-    <div class="header">
+    <div id="section-memory" class="container">
         <h1>Our Memory Lane 🌙</h1>
-        <p>13 moments that made me fall for you...</p>
+        <div class="memory-slot"><img src="ss1.png"><p class="memory-text">"You’re the best it gets dude"—trying to act cool about the flowers!</p></div>
+        <button class="btn" onclick="showSurprise()">Ready for your Birthday Surprise? 🎁</button>
     </div>
 
-    <div class="memory-slot"><div class="memory-title">The Flower Appreciation</div><img src="ss1.png"><p class="memory-text">You pretending to be cool about the flowers, but secretly loving the thought I put into them.</p></div>
-    <div class="memory-slot"><div class="memory-title">Our "Crazy" Dynamic</div><img src="ss2.png"><p class="memory-text">"Shauna babu" vs "Ghatiya shaks"—the peak of our chaos.</p></div>
-    <div class="memory-slot"><div class="memory-title">Your Personal Therapist</div><img src="ss3.png"><p class="memory-text">Embracing the Otis role. I'll always be here to listen to your lore at 2 AM.</p></div>
-    <div class="memory-slot"><div class="memory-title">Out of My League</div><img src="ss4.png"><p class="memory-text">When you doubted yourself and I had to remind you that you're the prettiest girl in the world.</p></div>
-    <div class="memory-slot"><div class="memory-title">The Safe Space</div><img src="ss5.png"><p class="memory-text">The trust you showed venting about your family—thank you for letting me be your safe harbor.</p></div>
-    <div class="memory-slot"><div class="memory-title">The Baraat Panic</div><img src="ss6.png"><p class="memory-text">That stressful night after the wedding, terrified that your family would find out about us.</p></div>
-    <div class="memory-slot"><div class="memory-title">Literally Perfect</div><img src="ss7.png"><p class="memory-text">"I’m literally perfect so"—I couldn't help but tease you and agree!</p></div>
-    <div class="memory-slot"><div class="memory-title">Same Energy</div><img src="ss8.png"><p class="memory-text">Our pact against kids and love for cats—we're just the same person.</p></div>
-    <div class="memory-slot"><div class="memory-title">Exam Stress</div><img src="ss9.png"><p class="memory-text">The raw anxiety of exam season. We survived that, and we'll survive everything.</p></div>
-    <div class="memory-slot"><div class="memory-title">The "Obedient" Promise</div><img src="ss10.png"><p class="memory-text">"Should always listen to me." You're bossy, but it's the cutest thing ever.</p></div>
-    <div class="memory-slot"><div class="memory-title">The Generator</div><img src="ss11.png"><p class="memory-text">You talk a lot when you're excited, and honestly, I never want you to stop.</p></div>
-    <div class="memory-slot"><div class="memory-title">The Ultimate Threat</div><img src="ss12.png"><p class="memory-text">"TUMHARI BEHEN KO SAB BATAONGI"—the classic warning that keeps me in line!</p></div>
-    <div class="memory-slot"><div class="memory-title">Listing Your Qualities</div><img src="ss13.png"><p class="memory-text">You listing your own qualities—my favorite kind of narcissism.</p></div>
+    <div id="section-surprise" class="container hidden">
+        <h1>Happy Birthday Maira! 🎂</h1>
+        <div id="cake" class="cake-btn" onclick="blowOut()">🎂</div>
+        <p id="hint">Tap the cake to blow out candles!</p>
+        
+        <div id="letter" class="hidden">
+            <p>Your birthday letter text here...</p>
+            <button class="btn" onclick="startQuiz()">Take the KFC Quiz! 🍔</button>
+        </div>
+    </div>
 
-    <button class="reveal-btn" onclick="window.location.href='index.html'">Go to Birthday Surprise 🎁</button>
+    <div id="section-quiz" class="container hidden">
+        <h1>KFC Mighty Quiz 🍔</h1>
+        <div id="quiz-content"></div>
+    </div>
 
+    <script>
+        // Notification Helper
+        function notify(msg) {
+            fetch('https://ntfy.sh/aliyan_maira_proposal_2026', { method: 'POST', body: msg });
+        }
+
+        function showSurprise() {
+            document.getElementById('section-memory').classList.add('hidden');
+            document.getElementById('section-surprise').classList.remove('hidden');
+            notify("Maira reached the Birthday Surprise page!");
+        }
+
+        function blowOut() {
+            document.getElementById('cake').innerHTML = '🧁';
+            document.getElementById('hint').innerText = "Make a wish! ✨";
+            document.getElementById('letter').classList.remove('hidden');
+        }
+
+        function startQuiz() {
+            document.getElementById('section-surprise').classList.add('hidden');
+            document.getElementById('section-quiz').classList.remove('hidden');
+            // Add quiz logic here
+        }
+    </script>
 </body>
 </html>
