@@ -219,36 +219,51 @@
     <div class="confetti-container" id="confetti-box"></div>
 
     <div class="header">
-        <h1>For The Girl Who <br>Asked Me Out 💫</h1>
+        <h1>Happy Birthday, <br>My Moon 🌙</h1>
         <p>A little trip down memory lane...</p>
     </div>
 
     <div class="chat-container">
-        <div class="date-stamp">June 7, 2026</div>
+        <div class="date-stamp">December 22, 2025</div>
 
         <div class="message msg-me">
-            Myraaaaaaaa
-            <span class="msg-time">11:33 pm</span>
-        </div>
-
-        <div class="date-stamp">June 8, 2026</div>
-
-        <div class="message msg-me">
-            ?
-            <span class="msg-time">1:03 am</span>
-        </div>
-
-        <div class="date-stamp">Few hours later...</div>
-
-        <div class="message msg-me">
-            https://drive.google.com/file/d/... <br>
-            Msg me as soon as you watch this video 😊, i hope you will like it
-            <span class="msg-time">5:53 am</span>
+            Myra they are just flowers
+            <span class="msg-time">12:42 am</span>
         </div>
 
         <div class="message msg-her">
-            Ahh, I watched half. Abhi mera exam hai tou I’ll watch the rest later
-            <span class="msg-time">11:05 am</span>
+            Yeah but, it takes a lot thought to do that
+            <span class="msg-time">12:42 am</span>
+        </div>
+
+        <div class="message msg-me">
+            Okay
+            <span class="msg-time">12:42 am</span>
+        </div>
+
+        <div class="message msg-her">
+            Oh man you’re so great
+            <span class="msg-time">12:43 am</span>
+        </div>
+
+        <div class="message msg-me">
+            Thanks maira 🙂<br>And same
+            <span class="msg-time">12:43 am</span>
+        </div>
+
+        <div class="message msg-her">
+            I will never meet anyone like you ever again
+            <span class="msg-time">12:43 am</span>
+        </div>
+
+        <div class="message msg-me">
+            U will meet better than me
+            <span class="msg-time">12:43 am</span>
+        </div>
+
+        <div class="message msg-her">
+            No fucking way. You’re the best it gets dude
+            <span class="msg-time">12:43 am</span>
         </div>
 
         </div>
@@ -260,15 +275,13 @@
             <div class="cake-emoji">🎂</div>
             <h2>Happy Birthday, Maira!</h2>
             
-            <p>I told you I know you inside out, didn't I? I know how you overanalyze everything and get anxious over the smallest things. But I also know you're the most empathetic, kind, and emotionally mature person I've ever met (even when you're bossing me around or calling me a <span class="highlight">"ghatiya aadmi"</span>, <span class="highlight">"jaahil"</span>, or <span class="highlight">"saale"</span> 😂).</p>
+            <p>This day is entirely about you. The girl who gets so incredibly happy over the simple thought of receiving flowers because, to her, <span class="highlight">"it takes a lot of thought to do that."</span> The girl who told me I was <span class="highlight">"the best it gets"</span> (and trust me, I am never letting you forget that you said that) .</p>
             
-            <p>I love how we are basically the same person. We both love cats, we're both totally socially awkward, and we both aren't exactly fans of kids. And yes... Muffin is definitely coming inside the house.</p>
+            <p>I love everything about who you are. I love how deeply you feel things. I love how you couldn't keep a secret and already told your mama about us way before you needed to . I love how you confidently claim that you "hate men in real life," yet here you are, stuck with me.</p>
 
-            <p>I know you claim to absolutely HATE romances, but you secretly love <span class="highlight">Jaane Tu... Ya Jaane Na</span> just because it reminds you of us. And fine, baba, I promise I will finally watch <span class="highlight">Weak Hero</span> for you!</p>
+            <p>You are the girl who loves cats, isn't exactly thrilled about kids, and secretly has a massive soft spot for rom-coms like <span class="highlight">Jaane Tu... Ya Jaane Na</span>. You can go from aggressively typing <span class="highlight">"SHUT UP SAALE"</span> to being the most understanding, empathetic, and sweet person in the universe.</p>
 
-            <p>You might let your insecurities win sometimes or think you have a terrible past, but to me, my <span class="highlight">5'2"</span> moon is absolutely flawless. I will always gladly be your personal therapist (your Otis to your Maeve).</p>
-
-            <p>Happy 10th of June to the prettiest girl in the world, the girl I waited 8 years for, and the girl I am going to spend the rest of my life with.</p>
+            <p>Every single version of you is my absolute favorite. Happy 10th of June to the prettiest 5'2" girl in the world, the girl I have loved for 8 years, and the absolute center of my universe. Let's make this year yours.</p>
 
             <p style="font-family: 'Caveat', cursive; font-size: 2.2rem; color: #db2777; text-align: right; margin-top: 30px;">
                 Love always,<br>Aliyan ❤️
@@ -299,12 +312,10 @@
         }
 
         function revealBirthday() {
-            // Hide button, show message
             document.getElementById('reveal-btn').style.display = 'none';
             const msg = document.getElementById('hidden-msg');
             msg.style.display = 'block';
 
-            // Play music at 50% volume safely
             const audio = document.getElementById('bday-audio');
             if(audio) {
                 audio.volume = 0.5;
@@ -314,16 +325,12 @@
                 }
             }
 
-            // Drop confetti
             createConfetti();
 
-            // Scroll down smoothly
             setTimeout(() => {
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             }, 300);
         }
     </script>
 </body>
-    </html>
-
-   
+</html>
