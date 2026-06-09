@@ -1,67 +1,58 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Happy Birthday Maira 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Memory Lane 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #fdf2f8;
-            --primary: #db2777;
-            --chat-bg: #ffffff;
-            --my-msg: #fbcfe8;
-            --her-msg: #f3f4f6;
-            --text: #374151;
+        body { background-color: #fdf2f8; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-family: 'Caveat', cursive; font-size: 3rem; color: #db2777; }
+        
+        .memory-slot { 
+            width: 100%; max-width: 400px; background: white; 
+            padding: 20px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px; text-align: center;
         }
-
-        body { background-color: var(--bg-color); font-family: 'Poppins', sans-serif; color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .memory-slot img { width: 100%; border-radius: 10px; }
+        .memory-text { margin-top: 15px; font-weight: 500; color: #4b5563; font-style: italic; }
         
-        .header { margin-top: 40px; text-align: center; padding: 0 20px; }
-        .header h1 { font-family: 'Caveat', cursive; font-size: 3.5rem; color: var(--primary); }
-
-        .chat-container { width: 90%; max-width: 500px; background: var(--chat-bg); border-radius: 20px; box-shadow: 0 15px 30px rgba(219, 39, 119, 0.1); margin: 40px 0; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
-        .date-stamp { text-align: center; font-size: 0.8rem; color: #9ca3af; }
-        .message { max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; }
-        .msg-me { background-color: var(--my-msg); color: #831843; align-self: flex-end; }
-        .msg-her { background-color: var(--her-msg); color: #1f2937; align-self: flex-start; }
-        
-        .hidden-message { display: none; background: white; padding: 40px 30px; border-radius: 20px; max-width: 500px; text-align: left; margin-bottom: 60px; }
-        .highlight { color: var(--primary); font-weight: 600; }
-        .reveal-btn { background-color: var(--primary); color: white; border: none; padding: 15px 40px; border-radius: 50px; cursor: pointer; font-size: 1.2rem; }
+        .reveal-btn { background-color: #db2777; color: white; border: none; padding: 20px 40px; border-radius: 50px; font-size: 1.3rem; cursor: pointer; margin: 40px 0; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>Happy Birthday, Maira! 🌙</h1>
-        <p>I was looking through our chats, and I couldn't help but smile...</p>
+        <h1>Our Memory Lane 🌙</h1>
+        <p>10 moments that defined us...</p>
     </div>
 
-    <div class="chat-container">
-        <div class="date-stamp">December 22, 2025 - 12:42 AM</div>
-        <div class="message msg-me">Myra they are just flowers</div>
-        <div class="message msg-her">Yeah but, it takes a lot thought to do that</div>
-        <div class="message msg-her">Oh man you’re so great... You’re the best it gets dude</div>
-        
-        <div class="date-stamp">March 24, 2026 - 1:33 AM</div>
-        <div class="message msg-me">Sahi bezati hu jati 😭</div>
-        <div class="message msg-her">Warna wo bhi mujhe baddua he detin 🤡</div>
+    <div class="memory-slot">
+        <img src="ss1.png" alt="Memory 1">
+        <p class="memory-text">The moment you admitted I was "the best it gets"—even if you said it while teasing me!</p>
     </div>
 
-    <button class="reveal-btn" onclick="document.getElementById('hidden-msg').style.display='block'; this.style.display='none'">Read my birthday wish for you 💖</button>
-
-    <div class="hidden-message" id="hidden-msg">
-        <h2>Happy Birthday, Maira!</h2>
-        <p>I hope you know that I pay attention to *everything*. I know you’re the girl who gets genuinely moved by a simple thought-out gesture, and I know you’re also the girl who calls me a <span class="highlight">"ghatiya aadmi"</span> or a <span class="highlight">"jaahil"</span> one second, and then trusts me with your deepest anxieties the next.</p>
-        
-        <p>You’re so much more than just the person who loves cats and <span class="highlight">Jaane Tu... Ya Jaane Na</span>. You’re the girl who gets anxious about everything, yet faces the world with such empathy. You’re the girl who overthinks until 3 AM, and I’m the guy who will always be here to listen until you fall asleep.</p>
-
-        <p>You might call yourself "hateable" sometimes, but to me, you are the most precious thing in this world. My 5'2" moon, my best friend, and the girl I've been waiting for, for 8 years.</p>
-
-        <p>Have the most amazing birthday. You deserve all the happiness, even if you do boss me around constantly!</p>
-        <p style="text-align: right; font-family: 'Caveat', cursive; font-size: 1.8rem; color: #db2777;">Love always, Aliyan ❤️</p>
+    <div class="memory-slot">
+        <img src="ss2.png" alt="Memory 2">
+        <p class="memory-text">When our families became a 'thing' and we were both low-key panicking.</p>
     </div>
+
+    <div class="memory-slot">
+        <img src="ss3.png" alt="Memory 3">
+        <p class="memory-text">The night you trusted me with your anxiety. Being your person means the world to me.</p>
+    </div>
+
+    <div class="memory-slot"><img src="ss4.png"><p class="memory-text">Insert your memory description here!</p></div>
+    <div class="memory-slot"><img src="ss5.png"><p class="memory-text">Insert your memory description here!</p></div>
+    <div class="memory-slot"><img src="ss6.png"><p class="memory-text">Insert your memory description here!</p></div>
+    <div class="memory-slot"><img src="ss7.png"><p class="memory-text">Insert your memory description here!</p></div>
+    <div class="memory-slot"><img src="ss8.png"><p class="memory-text">Insert your memory description here!</p></div>
+    <div class="memory-slot"><img src="ss9.png"><p class="memory-text">Insert your memory description here!</p></div>
+    <div class="memory-slot"><img src="ss10.png"><p class="memory-text">Insert your memory description here!</p></div>
+
+    <button class="reveal-btn" onclick="window.location.href='index.html'">Go to Birthday Surprise 🎁</button>
 
 </body>
 </html>
