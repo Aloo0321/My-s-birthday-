@@ -22,7 +22,7 @@
 
         /* --- UI Components --- */
         .section { 
-            display: none; /* Hidden by default */
+            display: none; 
             flex-direction: column; 
             align-items: center; 
             justify-content: center; 
@@ -64,18 +64,18 @@
         input:focus, textarea:focus { border-color: #db2777; }
         textarea { resize: vertical; min-height: 100px; }
 
-        /* --- Specific Elements --- */
         .cake-btn { font-size: 120px; cursor: pointer; margin: 20px; animation: pulse 2s infinite; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); }
         
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Memory Lane Specifics */
+        /* Memory Lane Redesign for Grouped Images */
         #sec-memory { justify-content: flex-start; padding-top: 40px; padding-bottom: 40px; }
-        .memory-slot { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 20px rgba(219, 39, 119, 0.1); margin-bottom: 30px; width: 100%; text-align: center; }
-        .memory-slot img { width: 100%; border-radius: 15px; border: 1px solid #fce7f3; margin-bottom: 15px; }
-        .memory-title { font-family: 'Caveat', cursive; font-size: 2rem; color: #db2777; margin-bottom: 5px; }
-        .memory-text { font-weight: 400; font-style: italic; margin-bottom: 0; }
+        .memory-group { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 20px rgba(219, 39, 119, 0.1); margin-bottom: 40px; width: 100%; text-align: center; }
+        .date-header { font-family: 'Caveat', cursive; font-size: 2.2rem; color: #db2777; border-bottom: 2px dashed #fbcfe8; padding-bottom: 10px; margin-bottom: 15px; }
+        .memory-text { font-weight: 500; font-style: italic; margin-bottom: 20px; color: #be185d; }
+        .image-gallery { display: flex; flex-direction: column; gap: 10px; }
+        .image-gallery img { width: 100%; border-radius: 15px; border: 1px solid #fce7f3; }
         
         .opt-btn { background: #fdf2f8; color: #db2777; border: 2px solid #fbcfe8; width: 100%; margin-top: 10px; padding: 12px; border-radius: 15px; font-weight: 500; font-size: 1rem; cursor: pointer; transition: 0.3s; }
         .opt-btn:hover { background: #fce7f3; }
@@ -83,8 +83,10 @@
 </head>
 <body>
 
+    <!-- BACKGROUND AUDIO -->
     <audio id="bday-audio" src="bday_song.mp3" loop></audio>
 
+    <!-- SECTION 1: SURPRISE & CAKE -->
     <div id="sec-cake" class="section active-section">
         <div class="card">
             <h1>Happy Birthday<br>Maira! 🌙</h1>
@@ -92,44 +94,25 @@
             <p id="cake-hint" style="color: #db2777; font-weight: 600;">Tap to blow out the candles! ✨</p>
             
             <div id="cake-letter" style="display: none; margin-top: 20px;">
-                <p>I know you inside out—from your "generator" talks to your "chamat" threats! I made something special for you.</p>
-                <button class="btn" onclick="switchSection('sec-memory')">See Our Memory Lane 📸</button>
+                <p>I know you inside out—from your "generator" talks to your "chamat" threats. But before you get your real surprise, we have some business to settle.</p>
+                <button class="btn" onclick="switchSection('sec-disclaimer')">I have a Challenge for you! 🍔</button>
             </div>
         </div>
     </div>
 
-    <div id="sec-memory" class="section">
-        <h1 style="margin-bottom: 5px;">Our Memory Lane</h1>
-        <p style="text-align: center; color: #db2777; font-weight: 500;">13 moments that defined us...</p>
-        
-        <div class="memory-slot"><div class="memory-title">The Flower Appreciation</div><img src="ss1.png"><p class="memory-text">You pretending to be cool about the flowers, but secretly loving the thought I put into them.</p></div>
-        <div class="memory-slot"><div class="memory-title">Our "Crazy" Dynamic</div><img src="ss2.png"><p class="memory-text">"Shauna babu" vs "Ghatiya shaks"—the peak of our chaos.</p></div>
-        <div class="memory-slot"><div class="memory-title">Your Personal Therapist</div><img src="ss3.png"><p class="memory-text">Embracing the Otis role. I'll always be here to listen to your lore at 2 AM.</p></div>
-        <div class="memory-slot"><div class="memory-title">Out of My League</div><img src="ss4.png"><p class="memory-text">When you doubted yourself and I had to remind you that you're the prettiest girl in the world.</p></div>
-        <div class="memory-slot"><div class="memory-title">The Safe Space</div><img src="ss5.png"><p class="memory-text">The trust you showed venting about your family—thank you for letting me be your safe harbor.</p></div>
-        <div class="memory-slot"><div class="memory-title">The Baraat Panic</div><img src="ss6.png"><p class="memory-text">That stressful night after the wedding, terrified that your family would find out about us.</p></div>
-        <div class="memory-slot"><div class="memory-title">Literally Perfect</div><img src="ss7.png"><p class="memory-text">"I’m literally perfect so"—I couldn't help but tease you and agree!</p></div>
-        <div class="memory-slot"><div class="memory-title">Same Energy</div><img src="ss8.png"><p class="memory-text">Our pact against kids and love for cats—we're just the same person.</p></div>
-        <div class="memory-slot"><div class="memory-title">Exam Stress</div><img src="ss9.png"><p class="memory-text">The raw anxiety of exam season. We survived that, and we'll survive everything.</p></div>
-        <div class="memory-slot"><div class="memory-title">The "Obedient" Promise</div><img src="ss10.png"><p class="memory-text">"Should always listen to me." You're bossy, but it's the cutest thing ever.</p></div>
-        <div class="memory-slot"><div class="memory-title">The Generator</div><img src="ss11.png"><p class="memory-text">You talk a lot when you're excited, and honestly, I never want you to stop.</p></div>
-        <div class="memory-slot"><div class="memory-title">The Ultimate Threat</div><img src="ss12.png"><p class="memory-text">"TUMHARI BEHEN KO SAB BATAONGI"—the classic warning that keeps me in line!</p></div>
-        <div class="memory-slot"><div class="memory-title">Listing Your Qualities</div><img src="ss13.png"><p class="memory-text">You listing your own qualities—my favorite kind of narcissism.</p></div>
-        
-        <button class="btn" style="margin-bottom: 40px;" onclick="switchSection('sec-disclaimer')">I have a Challenge for you! 🍔</button>
-    </div>
-
+    <!-- SECTION 2: QUIZ DISCLAIMER -->
     <div id="sec-disclaimer" class="section">
         <div class="card">
             <h1>KFC Mighty Quiz 🍔</h1>
             <h2>The Rules</h2>
-            <p>I know you claim to know me inside out. Let's test that.</p>
+            <p>I know you claim to know me perfectly. Let's test that.</p>
             <p><b>If you score more than 50%</b>, I will personally deliver a KFC Mighty Zinger straight to your house.</p>
             <p>Are you ready?</p>
             <button class="btn" onclick="startQuiz()">Start the Quiz! 🏁</button>
         </div>
     </div>
 
+    <!-- SECTION 3: THE QUIZ -->
     <div id="sec-quiz" class="section">
         <div class="card">
             <h2 id="q-text" style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: #374151;">Loading Question...</h2>
@@ -137,15 +120,18 @@
         </div>
     </div>
 
+    <!-- SECTION 4: QUIZ RESULTS (FAIL) -->
     <div id="sec-fail" class="section">
         <div class="card">
             <h1>Oh no! 😭</h1>
             <p id="fail-score"></p>
             <p>You scored less than 50%. I guess no KFC Mighty for you today!</p>
             <p>(Just kidding, I'll still buy you food, but you lost the bet!)</p>
+            <button class="btn" onclick="switchSection('sec-memory')">Let's look at our memories instead 📸</button>
         </div>
     </div>
 
+    <!-- SECTION 5: ADDRESS FORM (PASS) -->
     <div id="sec-address" class="section">
         <div class="card">
             <h1>You Won! 🎉</h1>
@@ -157,23 +143,69 @@
         </div>
     </div>
 
+    <!-- SECTION 6: ONE WISH FORM -->
     <div id="sec-wish" class="section">
         <div class="card">
             <h1>One Last Thing ✨</h1>
-            <p>While your burger is being prepared... make a wish.</p>
+            <p>Your burger is being prepared... now, make a wish.</p>
             <p>Type out one wish below. I will not just try, I will <b>100% fulfill it</b>. Wish wisely, you only get one.</p>
             <textarea id="wish-input" placeholder="My wish is..."></textarea>
             <button class="btn" onclick="submitFinal()">Make My Wish ❤️</button>
         </div>
     </div>
 
+    <!-- SECTION 7: FINAL SUCCESS -->
     <div id="sec-success" class="section">
         <div class="card">
             <h1>Sent! 💌</h1>
             <div style="font-size: 80px; margin: 20px;">🍔✨</div>
             <p>Your address and your wish have been sent directly to my phone.</p>
-            <p>Happy Birthday, my Maira. Get ready.</p>
+            <p style="color: #be185d; font-weight: 600;">The burger will take around 30 minutes to reach your destination.</p>
+            <p>Till then, let's revisit our best conversations!</p>
+            <button class="btn" onclick="switchSection('sec-memory')">Take a trip down memory lane 📸</button>
         </div>
+    </div>
+
+    <!-- SECTION 8: MEMORY LANE (GROUPED BY DATE) -->
+    <div id="sec-memory" class="section">
+        <h1 style="margin-bottom: 5px;">Our Memory Lane</h1>
+        <p style="text-align: center; color: #db2777; font-weight: 500; margin-bottom: 40px;">While you wait for your food...</p>
+        
+        <!-- DATE GROUP 1 Example -->
+        <div class="memory-group">
+            <div class="date-header">January 23, 2026</div>
+            <p class="memory-text">That time we talked endlessly and you called me crazy. Some things never change.</p>
+            <div class="image-gallery">
+                <img src="ss_jan23_1.png" alt="Chat part 1">
+                <img src="ss_jan23_2.png" alt="Chat part 2">
+                <img src="ss_jan23_3.png" alt="Chat part 3">
+            </div>
+        </div>
+
+        <!-- DATE GROUP 2 Example -->
+        <div class="memory-group">
+            <div class="date-header">February 15, 2026</div>
+            <p class="memory-text">The classic 'chamat' threats and you proving why you're perfect.</p>
+            <div class="image-gallery">
+                <img src="ss_feb15_1.png" alt="Chat part 1">
+                <img src="ss_feb15_2.png" alt="Chat part 2">
+            </div>
+        </div>
+
+        <!-- DATE GROUP 3 Example -->
+        <div class="memory-group">
+            <div class="date-header">March 10, 2026</div>
+            <p class="memory-text">When you finally realized I've always been your personal Otis.</p>
+            <div class="image-gallery">
+                <img src="ss_mar10_1.png" alt="Chat part 1">
+            </div>
+        </div>
+        
+        <!-- You can copy/paste the block above to add as many Date Groups as you want! -->
+        
+        <p style="font-family: 'Caveat', cursive; font-size: 2.5rem; color: #db2777; text-align: center; margin-top: 20px;">
+            Happy Birthday, Maira ❤️
+        </p>
     </div>
 
     <script>
@@ -209,7 +241,7 @@
                 audio.volume = 0.4;
                 audio.play().catch(e => console.log("Audio prevented:", e));
             }
-            notify("🎂 Maira just opened her Birthday page and blew out the candles!");
+            notify("🎂 Maira just blew out the candles!");
         }
 
         // --- Quiz Logic ---
@@ -225,7 +257,7 @@
         let currentQ = 0;
 
         function startQuiz() {
-            notify("🍔 Maira just started the KFC Quiz!");
+            notify("🍔 Maira started the KFC Quiz!");
             switchSection('sec-quiz');
             loadQuestion();
         }
@@ -286,7 +318,7 @@
             }
 
             // Send EVERYTHING to your phone
-            let finalMessage = `🚨 MAIRA'S FINAL SUBMISSION!\n\n🏠 Address: ${window.userAddress}\n✨ Wish: ${wish}`;
+            let finalMessage = `🚨 MAIRA'S BURGER REQUEST!\n\n🏠 Address: ${window.userAddress}\n✨ Wish: ${wish}`;
             notify(finalMessage);
 
             switchSection('sec-success');
