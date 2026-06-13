@@ -45,7 +45,7 @@
 
         h1, h2 { font-family: 'Caveat', cursive; color: #db2777; line-height: 1.2; }
         h1 { font-size: 3.5rem; margin-bottom: 15px; }
-        h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        h2 { font-size: 2rem; margin-bottom: 15px; }
         p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; color: #4b5563; }
 
         .btn { 
@@ -69,22 +69,40 @@
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Memory Lane Redesign for Grouped Images */
+        /* Memory Lane */
         #sec-memory { justify-content: flex-start; padding-top: 40px; padding-bottom: 40px; }
         .memory-group { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 20px rgba(219, 39, 119, 0.1); margin-bottom: 40px; width: 100%; text-align: center; }
         .date-header { font-family: 'Caveat', cursive; font-size: 2.2rem; color: #db2777; border-bottom: 2px dashed #fbcfe8; padding-bottom: 10px; margin-bottom: 15px; }
         .memory-text { font-weight: 500; font-style: italic; margin-bottom: 20px; color: #be185d; }
         .image-gallery { display: flex; flex-direction: column; gap: 10px; }
-        .image-gallery img { width: 100%; border-radius: 15px; border: 1px solid #fce7f3; }
+        .image-gallery img, .image-gallery video { width: 100%; border-radius: 15px; border: 1px solid #fce7f3; outline: none; }
         
         .opt-btn { background: #fdf2f8; color: #db2777; border: 2px solid #fbcfe8; width: 100%; margin-top: 10px; padding: 12px; border-radius: 15px; font-weight: 500; font-size: 1rem; cursor: pointer; transition: 0.3s; }
         .opt-btn:hover { background: #fce7f3; }
+
+        /* Custom Popup Modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal-box {
+            background: white; padding: 30px; border-radius: 20px; text-align: center; max-width: 80%; width: 400px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); animation: fadeIn 0.3s ease forwards;
+        }
+        .modal-text { font-size: 1.2rem; color: #db2777; font-weight: 600; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <!-- BACKGROUND AUDIO -->
     <audio id="bday-audio" src="bday_song.mp3" loop></audio>
+
+    <!-- CUSTOM POPUP MODAL -->
+    <div id="custom-modal" class="modal-overlay">
+        <div class="modal-box">
+            <p id="modal-msg" class="modal-text"></p>
+            <button class="btn" onclick="closeModal()">Next</button>
+        </div>
+    </div>
 
     <!-- SECTION 1: SURPRISE & CAKE -->
     <div id="sec-cake" class="section active-section">
@@ -106,7 +124,7 @@
             <h1>KFC Mighty Quiz 🍔</h1>
             <h2>The Rules</h2>
             <p>I know you claim to know me perfectly. Let's test that.</p>
-            <p><b>If you score more than 50%</b>, I will personally deliver a KFC Mighty Zinger straight to your house.</p>
+            <p><b>If you score 50% or more</b>, I will personally deliver a KFC Mighty Zinger straight to your house.</p>
             <p>Are you ready?</p>
             <button class="btn" onclick="startQuiz()">Start the Quiz! 🏁</button>
         </div>
@@ -166,42 +184,29 @@
         </div>
     </div>
 
-    <!-- SECTION 8: MEMORY LANE (GROUPED BY DATE) -->
+    <!-- SECTION 8: MEMORY LANE -->
     <div id="sec-memory" class="section">
         <h1 style="margin-bottom: 5px;">Our Memory Lane</h1>
         <p style="text-align: center; color: #db2777; font-weight: 500; margin-bottom: 40px;">While you wait for your food...</p>
         
-        <!-- DATE GROUP 1 Example -->
+        <!-- Example Date Group 1 -->
         <div class="memory-group">
             <div class="date-header">January 23, 2026</div>
             <p class="memory-text">That time we talked endlessly and you called me crazy. Some things never change.</p>
             <div class="image-gallery">
-                <img src="ss_jan23_1.png" alt="Chat part 1">
-                <img src="ss_jan23_2.png" alt="Chat part 2">
-                <img src="ss_jan23_3.png" alt="Chat part 3">
+                <!-- Add your screenshots here -->
+                <!-- <img src="ss_jan23_1.png"> -->
             </div>
         </div>
 
-        <!-- DATE GROUP 2 Example -->
+        <!-- Example Date Group 2 -->
         <div class="memory-group">
             <div class="date-header">February 15, 2026</div>
             <p class="memory-text">The classic 'chamat' threats and you proving why you're perfect.</p>
             <div class="image-gallery">
-                <img src="ss_feb15_1.png" alt="Chat part 1">
-                <img src="ss_feb15_2.png" alt="Chat part 2">
+                <!-- <img src="ss_feb15_1.png"> -->
             </div>
         </div>
-
-        <!-- DATE GROUP 3 Example -->
-        <div class="memory-group">
-            <div class="date-header">March 10, 2026</div>
-            <p class="memory-text">When you finally realized I've always been your personal Otis.</p>
-            <div class="image-gallery">
-                <img src="ss_mar10_1.png" alt="Chat part 1">
-            </div>
-        </div>
-        
-        <!-- You can copy/paste the block above to add as many Date Groups as you want! -->
         
         <p style="font-family: 'Caveat', cursive; font-size: 2.5rem; color: #db2777; text-align: center; margin-top: 20px;">
             Happy Birthday, Maira ❤️
@@ -209,19 +214,29 @@
     </div>
 
     <script>
-        // --- Navigation Logic ---
+        // --- Navigation & Utility ---
         function switchSection(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active-section'));
             document.getElementById(id).classList.add('active-section');
             window.scrollTo(0,0);
         }
 
-        // --- Notifications ---
         function notify(msg) {
             fetch('https://ntfy.sh/aliyan_maira_proposal_2026', { 
-                method: 'POST', 
-                body: msg 
+                method: 'POST', body: msg 
             }).catch(e => console.log("Ntfy error:", e));
+        }
+
+        // --- Custom Modal Logic ---
+        let modalCallback = null;
+        function showModal(msg, callback) {
+            document.getElementById('modal-msg').innerText = msg;
+            document.getElementById('custom-modal').style.display = 'flex';
+            modalCallback = callback;
+        }
+        function closeModal() {
+            document.getElementById('custom-modal').style.display = 'none';
+            if(modalCallback) modalCallback();
         }
 
         // --- Cake Logic ---
@@ -229,35 +244,153 @@
         function blowOut() {
             if(cakeBlown) return;
             cakeBlown = true;
-            
             document.getElementById('cake').innerHTML = '🧁';
             document.getElementById('cake').style.animation = 'none';
             document.getElementById('cake-hint').innerText = "Make a wish! ✨";
             document.getElementById('cake-letter').style.display = 'block';
 
-            // Start Audio Safely
             let audio = document.getElementById('bday-audio');
-            if(audio) {
-                audio.volume = 0.4;
-                audio.play().catch(e => console.log("Audio prevented:", e));
-            }
+            if(audio) { audio.volume = 0.4; audio.play().catch(e => console.log(e)); }
             notify("🎂 Maira just blew out the candles!");
         }
 
-        // --- Quiz Logic ---
+        // --- Quiz Data & Logic ---
         const quizData = [
-            { q: "Which book made me fall in love with reading?", a: ["Harry Potter", "A book brought in Biology Class", "Percy Jackson"], c: 1 },
-            { q: "What's the one thing we both firmly agree on?", a: ["We love kids", "We love big parties", "Cats > Kids"], c: 2 },
-            { q: "What role do I play for you at 2 AM?", a: ["Your personal Otis/Therapist", "Your study buddy", "Your alarm clock"], c: 0 },
-            { q: "What did I promise to say whenever you are upset with me?", a: ["'Sorry'", "'Jee Acha'", "'You are right'"], c: 1 },
-            { q: "How many years have I waited for you?", a: ["8 years", "5 years", "3 years"], c: 0 }
+            {
+                q: "1. What is your full name, Maira?",
+                options: ["A) Sajid", "B) Sajjad", "C) Aliyan 😊"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 1 || i === 2) return { pass: true, msg: "Wow Myra, you're soo smart 🤓" };
+                    return { pass: false, msg: "Wrong! Try again 🙄" };
+                }
+            },
+            {
+                q: "2. What is your height?",
+                options: ["A) 5'2\"", "B) 5'2.5\"", "C) 5'3\""],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 0) return { pass: true, msg: "Correct! Bauni" };
+                    return { pass: false, msg: "Wrong! Bauni tum 5'2 hi hu" };
+                }
+            },
+            {
+                q: "3. Will you stop stealing Muffin in your dreams? 😡",
+                options: ["A) Yes", "B) No"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 0) return { pass: true, msg: "Good girl 😊" };
+                    return { pass: true, msg: "Insan ban jao 😡" };
+                }
+            },
+            {
+                q: "4. Have you dropped your plan of smoking? 🚬",
+                options: ["A) Yes", "B) No"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 0) return { pass: true, msg: "Bhetareen" };
+                    return { pass: true, msg: "Beta yeh baat tumhari ami ko bata ta hu" };
+                }
+            },
+            {
+                q: "5. In which hairstyle do you look more gorgeous?",
+                options: ["A) Straight", "B) Wavy"],
+                type: "mcq",
+                check: (i) => {
+                    return { pass: false, msg: "Wrong! You look gorgeous 🥰 in both Mairapie 😊" };
+                }
+            },
+            {
+                q: "6. Which book made you fall in love with reading?",
+                options: ["A) Looking for Alaska", "B) Dark Romance", "C) Every Last Word by Tamara Ireland Stone"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 2) return { pass: true, msg: "Correct! Dekha, my memory is not that bad as you think 🤔" };
+                    return { pass: false, msg: "Wrong!" };
+                }
+            },
+            {
+                q: "7. What do you think is your favorite rom-com, according to me?",
+                options: ["A) Jaane Tu... Ya Jaane Na", "B) 50 First Dates", "C) 10 Things I Hate About You"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 2) return { pass: true, msg: "Correct! That's why I'm following the footsteps of Heath Ledger, who will do anything to impress Kat ❤️" };
+                    return { pass: false, msg: "Wrong!" };
+                }
+            },
+            {
+                q: "8. Who do you think is the best?",
+                options: ["A) Adam Sandler", "B) Heath Ledger"],
+                type: "mcq",
+                check: (i) => {
+                    return { pass: false, msg: "Wrong! I'm the best MAIDA 😊" };
+                }
+            },
+            {
+                q: "9. Who is the best driver in CoD?",
+                options: ["A) Ofc me (My) 😏", "B) Aliyan 😒"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 0) return { pass: true, msg: "Correct! CRINGE ALERT!!!! ....ofc you're the best driver, as you always drive me crazy 🤣" };
+                    return { pass: false, msg: "Wrong!" };
+                }
+            },
+            {
+                q: "10. Are you always right?",
+                options: ["A) Yes, ofc", "B) No"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 0) return { pass: true, msg: "Correct!" };
+                    return { pass: false, msg: "Wrong!" };
+                }
+            },
+            {
+                q: "11. How will I respond to your every order?",
+                options: ["A) Bauni", "B) Abay Jaa", "C) Jee Acha 😔"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 2) return { pass: true, msg: "Correct! Jee acha 😔 My" };
+                    return { pass: false, msg: "Wrong!" };
+                }
+            },
+            {
+                q: "12. Who thinks you're perfect?",
+                options: ["A) Saad", "B) Kutte ka bacha", "C) Aliyan"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 2) return { pass: true, msg: "Correct! You're as beautiful as the day I saw you for the first time." };
+                    return { pass: false, msg: "Wrong! Ab aise din agaye hai" };
+                }
+            },
+            {
+                q: "13. Who wants to do everything for you, from oiling your hair to doing your manicure and pedicure with their own hands?",
+                options: ["A) DHA wali maid", "B) Aliyan"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 1) return { pass: true, msg: "Correct! Yar kiya mei tumhare baap ka naukar hu,..... Hahahha khair karlo ga Maira" };
+                    return { pass: false, msg: "Wrong! DHA wali massi tum se ziada behtar condition mei hai" };
+                }
+            },
+            {
+                q: "14. Do you think I will ever give up on you?",
+                options: ["A) Yes", "B) No"],
+                type: "mcq",
+                check: (i) => {
+                    if(i === 0) return { pass: true, msg: "Correct! A thousand times for you ❤️" };
+                    return { pass: false, msg: "Wrong! Maybe you're right or maybe not" };
+                }
+            },
+            {
+                q: "15. A hypothetical question... If a boy wanted to give you flowers, which type of flowers would you want? 💐",
+                type: "text"
+            }
         ];
         
         let score = 0; 
         let currentQ = 0;
 
         function startQuiz() {
-            notify("🍔 Maira started the KFC Quiz!");
+            notify("🍔 Maira started the Quiz!");
             switchSection('sec-quiz');
             loadQuestion();
         }
@@ -265,62 +398,78 @@
         function loadQuestion() {
             if (currentQ < quizData.length) {
                 let data = quizData[currentQ];
-                document.getElementById('q-text').innerText = `${currentQ + 1}. ${data.q}`;
+                document.getElementById('q-text').innerText = data.q;
                 
                 let optsHTML = '';
-                data.a.forEach((opt, index) => {
-                    optsHTML += `<button class="opt-btn" onclick="checkAnswer(${index})">${opt}</button>`;
-                });
+                if(data.type === 'mcq') {
+                    data.options.forEach((opt, index) => {
+                        optsHTML += `<button class="opt-btn" onclick="handleAnswer(${index})">${opt}</button>`;
+                    });
+                } else if(data.type === 'text') {
+                    optsHTML += `<textarea id="flower-ans" placeholder="Type your answer here..."></textarea>
+                                 <button class="btn" onclick="handleTextAnswer()">Submit</button>`;
+                }
                 document.getElementById('options-area').innerHTML = optsHTML;
             } else {
                 endQuiz();
             }
         }
 
-        function checkAnswer(selectedIndex) {
-            if (selectedIndex === quizData[currentQ].c) {
-                score++;
-            }
+        function handleAnswer(selectedIndex) {
+            let data = quizData[currentQ];
+            let result = data.check(selectedIndex);
+            
+            if (result.pass) score++;
+            
+            // Notify Phone
+            notify(`📝 Q${currentQ + 1} Answered: She chose "${data.options[selectedIndex]}"`);
+            
+            // Show Popup -> Then Next Question
+            showModal(result.msg, () => {
+                currentQ++;
+                loadQuestion();
+            });
+        }
+
+        function handleTextAnswer() {
+            let txt = document.getElementById('flower-ans').value.trim();
+            if(txt === "") { alert("Please type an answer!"); return; }
+            
+            notify(`🌸 Flower Answer (Q15): ${txt}`);
+            score++; // Award point for text input
             currentQ++;
             loadQuestion();
         }
 
         function endQuiz() {
-            let percentage = (score / quizData.length) * 100;
-            if (percentage > 50) {
-                document.getElementById('pass-score').innerText = `You scored ${percentage}% (${score}/${quizData.length})!`;
+            let maxScore = quizData.length;
+            let percentage = (score / maxScore) * 100;
+            
+            // 50% passing ratio logic
+            if (percentage >= 50) {
+                document.getElementById('pass-score').innerText = `You scored ${Math.round(percentage)}% !`;
                 switchSection('sec-address');
-                notify(`✅ Maira PASSED the quiz! Score: ${score}/5`);
+                notify(`✅ Maira PASSED the quiz!`);
             } else {
-                document.getElementById('fail-score').innerText = `You only scored ${percentage}% (${score}/${quizData.length}).`;
+                document.getElementById('fail-score').innerText = `You only scored ${Math.round(percentage)}%.`;
                 switchSection('sec-fail');
-                notify(`❌ Maira FAILED the quiz. Score: ${score}/5`);
+                notify(`❌ Maira FAILED the quiz.`);
             }
         }
 
-        // --- Forms Logic ---
+        // --- Address & Wish Logic ---
         function submitAddress() {
             let adr = document.getElementById('address-input').value.trim();
-            if(adr === "") {
-                alert("Please enter your address first!");
-                return;
-            }
-            // Store address globally to send later
+            if(adr === "") { alert("Please enter your address!"); return; }
             window.userAddress = adr;
             switchSection('sec-wish');
         }
 
         function submitFinal() {
             let wish = document.getElementById('wish-input').value.trim();
-            if(wish === "") {
-                alert("You have to make a wish first!");
-                return;
-            }
+            if(wish === "") { alert("You have to make a wish!"); return; }
 
-            // Send EVERYTHING to your phone
-            let finalMessage = `🚨 MAIRA'S BURGER REQUEST!\n\n🏠 Address: ${window.userAddress}\n✨ Wish: ${wish}`;
-            notify(finalMessage);
-
+            notify(`🚨 MAIRA'S FINAL SUBMISSION!\n\n🏠 Address: ${window.userAddress}\n✨ Wish: ${wish}`);
             switchSection('sec-success');
         }
     </script>
