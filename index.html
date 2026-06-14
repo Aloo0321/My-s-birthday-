@@ -96,7 +96,6 @@
 
     <audio id="bday-audio" src="bday_song.mp3" loop></audio>
 
-    <!-- CUSTOM POPUP MODAL -->
     <div id="custom-modal" class="modal-overlay">
         <div class="modal-box">
             <p id="modal-msg" class="modal-text"></p>
@@ -104,7 +103,6 @@
         </div>
     </div>
 
-    <!-- SECTION 1: SURPRISE & CAKE -->
     <div id="sec-cake" class="section active-section">
         <div class="card">
             <h1>Happy Birthday<br>Maira! 🌙</h1>
@@ -118,7 +116,6 @@
         </div>
     </div>
 
-    <!-- SECTION 2: QUIZ DISCLAIMER -->
     <div id="sec-disclaimer" class="section">
         <div class="card">
             <h1>KFC Mighty Quiz 🍔</h1>
@@ -130,7 +127,6 @@
         </div>
     </div>
 
-    <!-- SECTION 3: THE QUIZ -->
     <div id="sec-quiz" class="section">
         <div class="card">
             <h2 id="q-text" style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: #374151;">Loading Question...</h2>
@@ -138,7 +134,6 @@
         </div>
     </div>
 
-    <!-- SECTION 4: QUIZ RESULTS (FAIL) -->
     <div id="sec-fail" class="section">
         <div class="card">
             <h1>Oh no! 😭</h1>
@@ -149,7 +144,6 @@
         </div>
     </div>
 
-    <!-- SECTION 5: ADDRESS FORM (PASS) -->
     <div id="sec-address" class="section">
         <div class="card">
             <h1>You Won! 🎉</h1>
@@ -161,7 +155,6 @@
         </div>
     </div>
 
-    <!-- SECTION 6: ONE WISH FORM -->
     <div id="sec-wish" class="section">
         <div class="card">
             <h1>One Last Thing ✨</h1>
@@ -172,7 +165,6 @@
         </div>
     </div>
 
-    <!-- SECTION 7: FINAL SUCCESS -->
     <div id="sec-success" class="section">
         <div class="card">
             <h1>Sent! 💌</h1>
@@ -184,42 +176,33 @@
         </div>
     </div>
 
-    <!-- SECTION 8: MEMORY LANE -->
     <div id="sec-memory" class="section">
         <h1 style="margin-bottom: 5px;">Our Memory Lane</h1>
         <p style="text-align: center; color: #db2777; font-weight: 500; margin-bottom: 40px;">While you wait for your food...</p>
         
-        <!-- Example Date Group 1 -->
         <div class="memory-group">
             <div class="date-header">January 23, 2026</div>
             <p class="memory-text">That time we talked endlessly and you called me crazy. Some things never change.</p>
             <div class="image-gallery">
                 
-               class="memory-group">
-
-            <div class="date-header">January 23, 2026</div>
-
-            <p class="memory-text">That time we talked endlessly and you called me crazy. Some things never change.</p>
-
-            <div class="image-gallery">
-
-                <!-- Add your screenshots here -->
-
-                <video src="https://res.cloudinary.com/dondwa0gx/video/upload/v1781379312/1_b6t8tg.mp4"></video>
+                <div class="video-container" style="margin-bottom: 15px;">
+                    <video id="vid1" src="https://res.cloudinary.com/dondwa0gx/video/upload/v1781379312/1_b6t8tg.mp4" playsinline style="width: 100%; border-radius: 15px; border: 1px solid #fce7f3; background: #000;"></video>
+                    
+                    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                        <button class="opt-btn" style="width: auto; padding: 10px 15px;" onclick="document.getElementById('vid1').currentTime -= 5">⏪ 5s</button>
+                        <button class="opt-btn" style="width: auto; padding: 10px 25px; font-weight: bold;" id="btn1" onclick="toggleVideo('vid1', 'btn1')">▶️ Play</button>
+                        <button class="opt-btn" style="width: auto; padding: 10px 15px;" onclick="document.getElementById('vid1').currentTime += 5">⏩ 5s</button>
+                    </div>
+                </div>
 
             </div>
+        </div>
 
-        </div>) 
-
-
-
-        <!-- Example Date Group 2 -->
         <div class="memory-group">
             <div class="date-header">February 15, 2026</div>
             <p class="memory-text">The classic 'chamat' threats and you proving why you're perfect.</p>
             <div class="image-gallery">
-                <!-- <img src="ss_feb15_1.png"> -->
-            </div>
+                </div>
         </div>
         
         <p style="font-family: 'Caveat', cursive; font-size: 2.5rem; color: #db2777; text-align: center; margin-top: 20px;">
@@ -241,7 +224,7 @@
             }).catch(e => console.log("Ntfy error:", e));
         }
 
-        // --- Custom Modal Logic ---
+        // --- Custom Popup Modal Logic ---
         let modalCallback = null;
         function showModal(msg, callback) {
             document.getElementById('modal-msg').innerText = msg;
@@ -251,6 +234,20 @@
         function closeModal() {
             document.getElementById('custom-modal').style.display = 'none';
             if(modalCallback) modalCallback();
+        }
+
+        // --- Custom Video Controls Logic ---
+        function toggleVideo(videoId, buttonId) {
+            let video = document.getElementById(videoId);
+            let button = document.getElementById(buttonId);
+            
+            if (video.paused) {
+                video.play();
+                button.innerHTML = "⏸️ Pause";
+            } else {
+                video.pause();
+                button.innerHTML = "▶️ Play";
+            }
         }
 
         // --- Cake Logic ---
